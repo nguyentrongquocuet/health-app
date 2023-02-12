@@ -1,16 +1,16 @@
 ✔ App header @done(23-02-12 17:04)
 ✔ App header menu @done(23-02-12 17:04)
 ✔ App footer @done(23-02-12 17:04)
-☐ App home page: leave the chart for later
+✔ App home page: leave the chart for later @done(23-02-13 00:08)
   ✔ Meal history @done(23-02-12 17:28)
-☐ App record page
+✔ App record page @done(23-02-13 00:08)
   ✔ Category btns: click to scroll to the selected section @done(23-02-12 19:40)
   ✔ My exercise @done(23-02-12 19:40)
   ✔ My diary @done(23-02-12 19:40)
 ✔ App column page @done(23-02-12 19:40)
-☐ App charts for home and record page
+✔ App charts for home and record page @done(23-02-13 00:08)
   ✔ Home page chart: should contain at max 12 entries for 12 months since it should just briefly show user how theyve changed @done(23-02-12 21:01)
-☐ App scroll-top btn
-☐ API calls
-☐ Finalize the app
+✔ App scroll-top btn @done(23-02-13 00:08)
+✔ API calls @done(23-02-13 00:08)
+✔ Finalize the app @done(23-02-13 00:08)
 
