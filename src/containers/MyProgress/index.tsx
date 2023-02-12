@@ -1,6 +1,7 @@
 import { getMyProgress } from '@app/api'
 import CircleProgress from '@app/components/CircleProgress'
 import { formatDate } from '@app/helpers/date-time'
+import useFakeFetch from '@app/hooks/useFakeFetch'
 import classNames from 'classnames'
 import { FC } from 'react'
 import styled from 'styled-components'
@@ -10,7 +11,7 @@ const featuredImage = 'https://api.lorem.space/image/drink?w=400&h=400'
 const MyProgress: FC<{
   className?: string
 }> = ({ className }) => {
-  const { progressPercent: percent } = getMyProgress()
+  const { data: { progressPercent: percent = 0 } = {} } = useFakeFetch(getMyProgress, [])
 
   return (
     <div className={classNames(className, 'relative flex-center font-body')}>

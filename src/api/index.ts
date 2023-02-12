@@ -4,6 +4,8 @@ import dayjs from 'dayjs'
 
 import { EMealTime, IDiarySummary, IExercise, IMealHistoryItem, IMyProgress, IRecommendedPost } from './types'
 
+const getApiCallTime = () => faker.datatype.number({ min: 2000, max: 5000 })
+
 let i = 0
 const newId = () => `${i++}`
 
@@ -72,11 +74,11 @@ export const getRecommendedPosts = (): IRecommendedPost[] => {
   }))
 }
 
-export const getMyProgress = (): IMyProgress => {
+export const getMyProgress = timeoutPromisify((): IMyProgress => {
   return {
     progressPercent: 75,
   }
-}
+}, getApiCallTime)
 
 const makeChartSerie = (amountOfUnit: number, unit: dayjs.ManipulateType, endDate: number) => {
   const today = dayjs(endDate)
@@ -95,11 +97,8 @@ const makeChartSerie = (amountOfUnit: number, unit: dayjs.ManipulateType, endDat
     .reverse()
 }
 
-export const getMonthlyBMIChartData = timeoutPromisify(
-  (numOfMonths = 12) => {
-    const now = Date.now()
+export const getMonthlyBMIChartData = timeoutPromisify((numOfMonths = 12) => {
+  const now = Date.now()
 
-    return [makeChartSerie(numOfMonths, 'month', now), makeChartSerie(numOfMonths, 'month', now)]
-  },
-  () => faker.datatype.number({ min: 2000, max: 5000 })
-)
+  return [makeChartSerie(numOfMonths, 'month', now), makeChartSerie(numOfMonths, 'month', now)]
+}, getApiCallTime)
