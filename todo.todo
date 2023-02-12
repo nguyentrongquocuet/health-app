@@ -1,9 +1,10 @@
-☐ App header
-☐ App header menu
-☐ App footer
-☐ App home page
+✔ App header @done(23-02-12 17:04)
+✔ App header menu @done(23-02-12 17:04)
+✔ App footer @done(23-02-12 17:04)
+☐ App home page: leave the chart for later
 ☐ App record page
 ☐ App column page
+☐ App charts for home and record page
 ☐ App scroll-top btn
 ☐ API calls
 ☐ Finalize the app
