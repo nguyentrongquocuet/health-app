@@ -1,7 +1,7 @@
 import RecommendedForYou from '@app/containers/RecommendedForYou'
 import { FC } from 'react'
 
-const LandingPage: FC = () => {
+const ColumnPage: FC = () => {
   return (
     <div className="app-container mt-14">
       <RecommendedForYou />
@@ -9,4 +9,4 @@ const LandingPage: FC = () => {
   )
 }
 
-export default LandingPage
+export default ColumnPage

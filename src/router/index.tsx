@@ -1,10 +1,12 @@
 import AppLayout from '@app/pages/AppLayout'
-import LandingPage from '@app/pages/ColumnPage'
-import HomePage from '@app/pages/HomePage'
-import MyRecordsPage from '@app/pages/MyRecordsPage'
+import { lazy } from '@loadable/component'
 import { createBrowserRouter } from 'react-router-dom'
 
 import { ROUTER_PATHS } from './constant'
+
+const LoadableHomePage = lazy(() => import('@app/pages/HomePage'))
+const LoadableMyRecordsPage = lazy(() => import('@app/pages/MyRecordsPage'))
+const LoadableColumnPage = lazy(() => import('@app/pages/ColumnPage'))
 
 const AppRouter = createBrowserRouter([
   {
@@ -13,16 +15,16 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         path: ROUTER_PATHS.Home,
-        element: <HomePage />,
+        element: <LoadableHomePage />,
         index: true,
       },
       {
         path: ROUTER_PATHS.MyRecords,
-        element: <MyRecordsPage />,
+        element: <LoadableMyRecordsPage />,
       },
       {
         path: ROUTER_PATHS.ColumnPage,
-        element: <LandingPage />,
+        element: <LoadableColumnPage />,
       },
     ],
   },
