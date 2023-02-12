@@ -101,5 +101,5 @@ export const getMonthlyBMIChartData = timeoutPromisify(
 
     return [makeChartSerie(numOfMonths, 'month', now), makeChartSerie(numOfMonths, 'month', now)]
   },
-  () => faker.datatype.number({ min: 100, max: 3000 })
+  () => faker.datatype.number({ min: 2000, max: 5000 })
 )

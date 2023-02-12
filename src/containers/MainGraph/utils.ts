@@ -1,6 +1,26 @@
 const MILLISECONDS_IN_28_DAYS = 28 * 24 * 3600 * 1000
 
-export const createChartOptions = (weightData: number[][], fatData: number[][]) => {
+export const createWeightSerie = (data: number[][]): Highcharts.SeriesOptionsType => ({
+  type: 'line',
+  data: data,
+  name: 'Weight',
+  color: '#8FE9D0',
+  marker: {
+    symbol: 'circle',
+  },
+})
+
+export const createFatSerie = (data: number[][]): Highcharts.SeriesOptionsType => ({
+  type: 'line',
+  data: data,
+  name: 'Body fat percentage',
+  color: '#FFCC21',
+  marker: {
+    symbol: 'circle',
+  },
+})
+
+export const createChartOptions = () => {
   return {
     title: {
       text: 'BMI Graph',
@@ -8,26 +28,7 @@ export const createChartOptions = (weightData: number[][], fatData: number[][]) 
         fontSize: '0px',
       },
     },
-    series: [
-      {
-        type: 'line',
-        data: weightData,
-        name: 'Weight',
-        color: '#FFCC21',
-        marker: {
-          symbol: 'circle',
-        },
-      },
-      {
-        type: 'line',
-        data: fatData,
-        name: 'Body fat percentage',
-        color: '#8FE9D0',
-        marker: {
-          symbol: 'circle',
-        },
-      },
-    ],
+    series: [],
     xAxis: {
       type: 'datetime',
       /**

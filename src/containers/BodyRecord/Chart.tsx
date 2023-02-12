@@ -21,10 +21,7 @@ const BodyRecordChart = () => {
     if (!isLoading) {
       chart.chart.addSeries(createWeightSerie(chartData[0]), false)
       chart.chart.addSeries(createFatSerie(chartData[1]), false)
-      chart.chart.hideLoading()
       chart.chart.redraw(true)
-    } else {
-      chart.chart.hideLoading()
     }
   }, [isLoading, chartData])
 
