@@ -5,11 +5,11 @@ import styled from 'styled-components'
 import Exercise from './Exercise'
 
 const ExerciseList: FC<{
-  exercises: IExercise[]
-}> = ({ exercises }) => {
+  items: IExercise[]
+}> = ({ items }) => {
   return (
     <ExerciseListWrapper className="overflow-y-auto grid grid-cols-2 gap-x-10 pr-6">
-      {exercises.map(({ id, kcal, timeAmountSeconds, title }) => (
+      {items.map(({ id, kcal, timeAmountSeconds, title }) => (
         <Exercise key={id} kcal={kcal} timeAmountSeconds={timeAmountSeconds} title={title} />
       ))}
     </ExerciseListWrapper>

@@ -8,7 +8,7 @@ const MealHistory = () => {
   return (
     <section aria-label="食事履歴" className="app-container text-center">
       <Filter />
-      <HistoryList meals={getMealHistory()} />
+      <HistoryList items={getMealHistory()} />
       <Button className="mt-7">記録をもっと見る</Button>
     </section>
   )

@@ -15,7 +15,7 @@ const MyExercise: FC<{
         <Heading>My exercise</Heading>
         <RecordDate>2021.05.21</RecordDate>
       </div>
-      <ExerciseList exercises={getMyExercises()} />
+      <ExerciseList items={getMyExercises()} />
     </Wrapper>
   )
 }

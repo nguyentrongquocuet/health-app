@@ -5,11 +5,11 @@ import { FC, useMemo } from 'react'
 import styled from 'styled-components'
 
 const HistoryList: FC<{
-  meals: IMealHistoryItem[]
-}> = ({ meals }) => {
+  items: IMealHistoryItem[]
+}> = ({ items }) => {
   return (
     <div className="grid grid-cols-4 gap-2 font-body">
-      {meals.map((meal) => (
+      {items.map((meal) => (
         <Meal key={meal.id} {...meal}></Meal>
       ))}
     </div>
