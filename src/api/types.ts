@@ -12,3 +12,10 @@ export interface IMealHistoryItem {
   featured_image: string
   note?: string
 }
+
+export interface IExercise {
+  id: string
+  title: string
+  timeAmountSeconds: number
+  kcal: number
+}
