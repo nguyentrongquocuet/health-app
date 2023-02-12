@@ -1,29 +1,29 @@
-import { getMyExercises } from '@app/api'
 import { formatDate } from '@app/helpers/date-time'
 import classNames from 'classnames'
 import { FC } from 'react'
 import styled from 'styled-components'
 
-import ExerciseList from './components/ExerciseList'
+import BodyRecordChart from './Chart'
 
-// TODO: seems this design is for infinite loading, potential performance issue on large list, implement virtual list
-const MyExercise: FC<{
+const BodyRecords: FC<{
   className?: string
   id?: string
 }> = ({ className, id }) => {
   return (
-    <Wrapper id={id} className={classNames(className, 'bg-dark-500')}>
-      <div className="mb-1 flex uppercase font-body">
-        <Heading>My exercise</Heading>
+    <Wrapper id={id} className={classNames(className, 'bg-dark-500 py-4 px-6 flex flex-col')}>
+      <div className="mb-1 flex font-body uppercase">
+        <Heading>Body record</Heading>
         <RecordDate>{formatDate(Date.now(), 'YYYY.MM.DD')}</RecordDate>
       </div>
-      <ExerciseList items={getMyExercises()} />
+      <div className="h-full px-3">
+        <BodyRecordChart />
+      </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
-  padding: 16px 26px 16px 24px;
+  height: 304px;
 `
 
 const Heading = styled.h5`
@@ -39,4 +39,4 @@ const RecordDate = styled.h4`
   letter-spacing: 0.11px;
 `
 
-export default MyExercise
+export default BodyRecords

@@ -24,7 +24,7 @@ Highcharts.setOptions({
     tickColor: 'transparent',
     labels: {
       style: {
-        color: '#FFFFFF',
+        color: '#ffffff',
       },
     },
     dateTimeLabelFormats: {
@@ -46,6 +46,22 @@ Highcharts.setOptions({
   },
   scrollbar: {
     enabled: false,
+  },
+  rangeSelector: {
+    enabled: false,
+    inputEnabled: false,
+    allButtonsEnabled: true,
+    verticalAlign: 'bottom',
+    buttonTheme: {
+      width: 56,
+      r: 12,
+      height: 24,
+    },
+    labelStyle: {
+      opacity: 0,
+      display: 'block',
+      fontSize: '0px',
+    },
   },
   plotOptions: {
     series: {

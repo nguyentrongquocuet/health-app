@@ -18,3 +18,19 @@
 .bg-gradient {
   @apply bg-gradient-to-b from-primary-300 to-primary-400;
 }
+
+.highcharts-button-normal text {
+  @apply text-primary-300 fill-primary-300 #{!important};
+}
+
+.highcharts-button-normal rect {
+  @apply fill-light;
+}
+
+.highcharts-button-pressed text {
+  @apply text-light fill-light #{!important};
+}
+
+.highcharts-button-pressed rect {
+  @apply fill-primary-300;
+}

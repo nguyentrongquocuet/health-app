@@ -77,14 +77,14 @@ export const getMyProgress = (): IMyProgress => {
   }
 }
 
-const getMonthlyChartSerie = (numOfMonths: number, endDate: number) => {
+const makeChartSerie = (amountOfUnit: number, unit: dayjs.ManipulateType, endDate: number) => {
   const today = dayjs(endDate)
 
-  return new Array(12)
+  return new Array(amountOfUnit)
     .fill(0)
     .map((_, idx) => {
       return [
-        today.subtract(idx, 'months').unix() * 1000,
+        today.subtract(idx, unit).unix() * 1000,
         faker.datatype.number({
           min: 10,
           max: 20,
@@ -97,5 +97,5 @@ const getMonthlyChartSerie = (numOfMonths: number, endDate: number) => {
 export const getMonthlyBMIChartData = (numOfMonths = 12) => {
   const now = Date.now()
 
-  return [getMonthlyChartSerie(numOfMonths, now), getMonthlyChartSerie(numOfMonths, now)]
+  return [makeChartSerie(numOfMonths, 'month', now), makeChartSerie(numOfMonths, 'month', now)]
 }
