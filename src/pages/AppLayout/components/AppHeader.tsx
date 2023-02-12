@@ -6,13 +6,25 @@ import { ReactComponent as RecordIcon } from '@app/assets/icon_memo.svg'
 import { ReactComponent as MenuIcon } from '@app/assets/icon_menu.svg'
 import { ReactComponent as Logo } from '@app/assets/logo.svg'
 import NavLink from '@app/components/NavLink'
+import { useAuth } from '@app/hooks/useAuth'
 import useClickOutside from '@app/hooks/useClickOutside'
 import { ROUTER_PATHS } from '@app/router/constant'
+import classNames from 'classnames'
 import { FC, memo, ReactNode, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Header = () => {
+  const { authenticated, login, logout } = useAuth()
+
+  const toggleAuthentication = () => {
+    if (authenticated) {
+      logout()
+    } else {
+      login()
+    }
+  }
+
   return (
     <StyledHeader id="app-header" className="w-full bg-dark-500 z-10 sticky top-0 left-0">
       <nav className="h-16 app-container flex justify-between">
@@ -24,7 +36,7 @@ const Header = () => {
             <RecordIcon />
             <span>自分の記録</span>
           </NavItem>
-          <NavItem>
+          <NavItem onClick={toggleAuthentication}>
             <ChallengeIcon />
             <span>チャレンジ</span>
           </NavItem>
@@ -67,9 +79,10 @@ const CounterBadge: FC<{ children: ReactNode; counter: number }> = ({ children, 
 const NavItem: FC<{
   children?: ReactNode
   to?: string
-}> = ({ children, to }) => {
+  onClick?: () => void
+}> = ({ children, to, onClick }) => {
   const content = (
-    <div tabIndex={0} className="py-3 pl-2 pr-4 w-40 flex items-center gap-2">
+    <div onClick={onClick} tabIndex={0} className={classNames('py-3 pl-2 pr-4 w-40 flex items-center gap-2', { 'cursor-pointer': !!onClick })}>
       {children}
     </div>
   )

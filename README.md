@@ -1,6 +1,12 @@
 
 # Readme
 
+# How to run the app
+* Requirements: node^16.13.1
+* For development: `yarn dev`
+
+### Click 'チャレンジ' to toggle login/logout, default to logged out
+
 # Scenario assumptions
 
 ## Scenario 1: Anonymous user

@@ -1,16 +1,16 @@
-import { useEffect } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { FC, ReactNode, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import AppFooter from './components/AppFooter'
 import AppHeader from './components/AppHeader'
 import ScrollToTop from './components/ScrollToTop'
 
-const AppLayout = () => {
+const AppLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
       <AppHeader />
       <main id="app-main" className="pb-16">
-        <Outlet />
+        {children}
       </main>
       <AppFooter />
       <AutoToTop />
