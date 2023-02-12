@@ -20,16 +20,16 @@ const useFakeFetch = <I extends any[], R>(fetchFn: (...input: I) => Promise<R>, 
 
   const { current: state } = useRef<FakeFetchRefData<I, R>>({
     data: undefined,
-    isLoading: false,
+    isLoading: true,
     refetch: emptyFn,
   } as any)
 
   const rerender = () => setB((v) => !v)
 
-  const fetchData = useCallback(async () => {
+  const fetchData = useCallback(async (...args: I) => {
     state.isLoading = true
     rerender()
-    const data = await fetchFn(...initialInputs)
+    const data = await fetchFn(...args)
     state.data = data
     state.isLoading = false
     rerender()
@@ -39,7 +39,7 @@ const useFakeFetch = <I extends any[], R>(fetchFn: (...input: I) => Promise<R>, 
   state.refetch = fetchData
 
   useEffect(() => {
-    fetchData()
+    fetchData(...initialInputs)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
