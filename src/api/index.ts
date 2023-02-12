@@ -55,14 +55,14 @@ export const getMyExercises = (): IExercise[] => {
   }))
 }
 
-export const getMyDiariesSummary = (): IDiarySummary[] => {
-  return new Array(8).fill(0).map((_) => ({
+export const getMyDiariesSummary = timeoutPromisify((amount = 8): IDiarySummary[] => {
+  return new Array(amount).fill(0).map((_) => ({
     id: newId(),
     content: faker.lorem.sentence(30),
     date: faker.date.past().toString(),
     title: faker.lorem.sentence(5),
   }))
-}
+}, getApiCallTime)
 
 export const getRecommendedPosts = (): IRecommendedPost[] => {
   return new Array(8).fill(0).map((_) => ({

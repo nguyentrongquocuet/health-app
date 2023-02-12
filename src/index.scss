@@ -34,3 +34,7 @@
 .highcharts-button-pressed rect {
   @apply fill-primary-300;
 }
+
+.diary-list + .diary-skeleton {
+  margin-top: 12px;
+}

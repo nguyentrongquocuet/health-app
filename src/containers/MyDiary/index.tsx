@@ -1,20 +1,33 @@
 import { getMyDiariesSummary } from '@app/api'
 import Button from '@app/components/Button'
+import useFakeFetch from '@app/hooks/useFakeFetch'
 import { FC } from 'react'
 import styled from 'styled-components'
 
 import DiarySummaryList from './components/DiarySummaryList'
+import Skeleton from './components/Skeleton'
 
 const MyDiary: FC<{
   className?: string
   id?: string
 }> = ({ className, id }) => {
+  const { data, isLoading, refetch } = useFakeFetch(getMyDiariesSummary, [])
+
+  const triggerLoadMore = () => {
+    if (isLoading) {
+      return
+    }
+
+    refetch(data.length + 8)
+  }
+
   return (
     <section id={id} className={className}>
       <Heading className="text-dark-500 h-8 font-body">MY DIARY</Heading>
-      <DiarySummaryList items={getMyDiariesSummary()} />
+      {data && <DiarySummaryList items={data} />}
+      {isLoading && <Skeleton />}
       <div className="text-center">
-        <LoadMoreBtn>自分の日記をもっと見る</LoadMoreBtn>
+        <LoadMoreBtn onClick={triggerLoadMore}>自分の日記をもっと見る</LoadMoreBtn>
       </div>
     </section>
   )

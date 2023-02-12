@@ -22,7 +22,7 @@ const DiarySummary: FC<Omit<IDiarySummary, 'id'>> = ({ content, date, title }) =
   )
 }
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   padding: 14px 13px 25px 14px;
 `
 
