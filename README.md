@@ -27,12 +27,17 @@ I found some inconsistence in the design that includes typography, spacing unit 
 The app shall not be responsive
 
 ## Mock data
-Mock data will be generate in runtime using `faker`, and I will use Promise to implement mock api
+Mock data will be generate in runtime using `faker`, and I will use Promise to implement mock api. Im not focusing on api specifications, mock data for lists will change entirely when refetch new page, that's why you'd see different data set each time you hit `Load more`. Mock data is just for demonstrating how the UI works.
 
 # Typography:
 There are 2 fonts: 
 - Hiragino Kaku Gothic Pro for most of the text(Japanese texts)
 - Inter: for date, number, for English texts
+
+# Known issues
+- Bundle size is too large(422kb after gzip)
+- No API error handling
+- The app is not responsive
 
 # Dev env:
 Node.js: 16.13.1
