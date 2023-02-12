@@ -9,6 +9,7 @@
   ✔ My diary @done(23-02-12 19:40)
 ✔ App column page @done(23-02-12 19:40)
 ☐ App charts for home and record page
+  ✔ Home page chart: should contain at max 12 entries for 12 months since it should just briefly show user how theyve changed @done(23-02-12 21:01)
 ☐ App scroll-top btn
 ☐ API calls
 ☐ Finalize the app
