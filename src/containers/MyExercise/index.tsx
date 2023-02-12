@@ -9,6 +9,7 @@ import ExerciseList from './components/ExerciseList'
 import Skeleton from './components/Skeleton'
 
 // TODO: seems this design is for infinite loading, potential performance issue on large list, implement virtual list
+// TODO: skeleton wont work for infinite loading
 const MyExercise: FC<{
   className?: string
   id?: string

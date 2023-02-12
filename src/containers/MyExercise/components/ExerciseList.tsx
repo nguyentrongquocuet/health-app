@@ -1,5 +1,5 @@
 import { IExercise } from '@app/api/types'
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import styled from 'styled-components'
 
 import Exercise from './Exercise'
@@ -32,4 +32,4 @@ export const ExerciseListWrapper = styled.div`
   }
 `
 
-export default ExerciseList
+export default memo(ExerciseList)

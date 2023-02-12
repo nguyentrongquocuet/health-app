@@ -12,39 +12,51 @@ const newId = () => `${i++}`
 const createMealsForADay = (date: Date): IMealHistoryItem[] => {
   return [
     {
-      featured_image: faker.image.food(400, 400, true),
+      featuredImage: faker.image.food(400, 400, true),
       date: date.toString(),
       id: newId(),
-      meal_time: EMealTime.Morning,
+      mealTime: EMealTime.Morning,
       note: `Meal number ${i}`,
     },
     {
-      featured_image: faker.image.food(400, 400, true),
+      featuredImage: faker.image.food(400, 400, true),
       date: date.toString(),
       id: newId(),
-      meal_time: EMealTime.Lunch,
+      mealTime: EMealTime.Lunch,
       note: `Meal number ${i}`,
     },
     {
-      featured_image: faker.image.food(400, 400, true),
+      featuredImage: faker.image.food(400, 400, true),
       date: date.toString(),
       id: newId(),
-      meal_time: EMealTime.Dinner,
+      mealTime: EMealTime.Dinner,
       note: `Meal number ${i}`,
     },
     {
-      featured_image: faker.image.food(400, 400, true),
+      featuredImage: faker.image.food(400, 400, true),
       date: date.toString(),
       id: newId(),
-      meal_time: EMealTime.Snack,
+      mealTime: EMealTime.Snack,
       note: `Meal number ${i}`,
     },
   ]
 }
 
-export const getMealHistory = (): IMealHistoryItem[] => {
-  return [...createMealsForADay(new Date()), ...createMealsForADay(new Date(Date.now() - 25 * 60 * 60 * 1000))]
-}
+const mealList = [EMealTime.Morning, EMealTime.Lunch, EMealTime.Dinner, EMealTime.Snack]
+
+export const getMealHistory = timeoutPromisify((amount = 8): IMealHistoryItem[] => {
+  return new Array(amount).fill(amount).map((_, idx) => {
+    const mealTime = mealList[idx % 4]
+
+    return {
+      featured_image: faker.image.food(400, 400, true),
+      date: faker.date.past().toString(),
+      id: newId(),
+      mealTime,
+      featuredImage: faker.image.food(400, 400, true),
+    }
+  })
+}, getApiCallTime)
 
 export const getMyExercises = timeoutPromisify((): IExercise[] => {
   return new Array(40).fill(0).map((_) => ({

@@ -6,10 +6,10 @@ export const enum EMealTime {
 }
 
 export interface IMealHistoryItem {
-  meal_time: EMealTime
+  mealTime: EMealTime
   date: string
   id: string
-  featured_image: string
+  featuredImage: string
   note?: string
 }
 
