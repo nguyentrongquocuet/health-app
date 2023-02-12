@@ -26,3 +26,14 @@ export interface IDiarySummary {
   title: string
   content: string
 }
+
+export interface IRecommendedPost {
+  /**
+   * 8:13 img
+   */
+  figure: string
+  summary: string
+  date: string
+  hashtags: string[]
+  id: string
+}

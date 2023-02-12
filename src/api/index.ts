@@ -1,6 +1,6 @@
 import faker from '@app/libs/faker'
 
-import { EMealTime, IDiarySummary, IExercise, IMealHistoryItem } from './types'
+import { EMealTime, IDiarySummary, IExercise, IMealHistoryItem, IRecommendedPost } from './types'
 
 let i = 0
 const newId = () => `${i++}`
@@ -8,28 +8,28 @@ const newId = () => `${i++}`
 const createMealsForADay = (date: Date): IMealHistoryItem[] => {
   return [
     {
-      featured_image: 'https://api.lorem.space/image/burger?w=400&h=400',
+      featured_image: faker.image.food(400, 400, true),
       date: date.toString(),
       id: newId(),
       meal_time: EMealTime.Morning,
       note: `Meal number ${i}`,
     },
     {
-      featured_image: 'https://api.lorem.space/image/pizza?w=400&h=400',
+      featured_image: faker.image.food(400, 400, true),
       date: date.toString(),
       id: newId(),
       meal_time: EMealTime.Lunch,
       note: `Meal number ${i}`,
     },
     {
-      featured_image: 'https://api.lorem.space/image/drink?w=400&h=400',
+      featured_image: faker.image.food(400, 400, true),
       date: date.toString(),
       id: newId(),
       meal_time: EMealTime.Dinner,
       note: `Meal number ${i}`,
     },
     {
-      featured_image: 'https://api.lorem.space/image/movie?w=400&h=400',
+      featured_image: faker.image.food(400, 400, true),
       date: date.toString(),
       id: newId(),
       meal_time: EMealTime.Snack,
@@ -57,5 +57,15 @@ export const getMyDiariesSummary = (): IDiarySummary[] => {
     content: faker.lorem.sentence(30),
     date: faker.date.past().toString(),
     title: faker.lorem.sentence(5),
+  }))
+}
+
+export const getRecommendedPosts = (): IRecommendedPost[] => {
+  return new Array(8).fill(0).map((_) => ({
+    date: faker.date.past().toString(),
+    figure: faker.image.food(400, 400, true),
+    hashtags: faker.helpers.uniqueArray(() => faker.lorem.word(), 3),
+    id: newId(),
+    summary: faker.lorem.paragraph(3),
   }))
 }

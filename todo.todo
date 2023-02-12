@@ -4,14 +4,12 @@
 ☐ App home page: leave the chart for later
   ✔ Meal history @done(23-02-12 17:28)
 ☐ App record page
-  ☐ Category btns: click to scroll to the selected section
-  ☐ My exercise
-  ☐ My diary
-☐ App column page
+  ✔ Category btns: click to scroll to the selected section @done(23-02-12 19:40)
+  ✔ My exercise @done(23-02-12 19:40)
+  ✔ My diary @done(23-02-12 19:40)
+✔ App column page @done(23-02-12 19:40)
 ☐ App charts for home and record page
 ☐ App scroll-top btn
 ☐ API calls
 ☐ Finalize the app
-
-
 

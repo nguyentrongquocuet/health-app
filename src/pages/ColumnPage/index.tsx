@@ -1,9 +1,10 @@
+import RecommendedForYou from '@app/containers/RecommendedForYou'
 import { FC } from 'react'
 
 const LandingPage: FC = () => {
   return (
-    <div>
-      Column page
+    <div className="app-container mt-14">
+      <RecommendedForYou />
     </div>
   )
 }
