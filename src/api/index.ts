@@ -76,15 +76,15 @@ export const getMyDiariesSummary = timeoutPromisify((amount = 8): IDiarySummary[
   }))
 }, getApiCallTime)
 
-export const getRecommendedPosts = (): IRecommendedPost[] => {
-  return new Array(8).fill(0).map((_) => ({
+export const getRecommendedPosts = timeoutPromisify((amount = 8): IRecommendedPost[] => {
+  return new Array(amount).fill(0).map((_) => ({
     date: faker.date.past().toString(),
     figure: faker.image.food(400, 400, true),
     hashtags: faker.helpers.uniqueArray(() => faker.lorem.word(), 3),
     id: newId(),
     summary: faker.lorem.paragraph(3),
   }))
-}
+}, getApiCallTime)
 
 export const getMyProgress = timeoutPromisify((): IMyProgress => {
   return {

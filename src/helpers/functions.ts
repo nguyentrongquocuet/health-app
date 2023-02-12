@@ -1,6 +1,6 @@
-export const timeoutPromisify = <I extends any[], F extends (...input: I) => any>(fn: F, timeoutFn: () => number) => {
-  return (...p: Parameters<F>) => {
-    return new Promise<ReturnType<F>>((res) => {
+export const timeoutPromisify = <I extends any[], R>(fn: (...i: I) => R, timeoutFn: () => number) => {
+  return (...p: I) => {
+    return new Promise<R>((res) => {
       window.setTimeout(() => {
         res(fn(...p))
       }, timeoutFn())

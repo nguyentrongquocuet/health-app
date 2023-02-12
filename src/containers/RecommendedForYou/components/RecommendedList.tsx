@@ -9,7 +9,7 @@ const RecommendedList: FC<{
   posts: IRecommendedPost[]
 }> = ({ posts }) => {
   return (
-    <div className="grid grid-cols-4 gap-x-2 gap-y-5 mt-14">
+    <div className="grid grid-cols-4 gap-x-2 gap-y-5 mt-14 recommended-posts">
       {posts.map((post) => (
         <RecommendedPost key={post.id} {...post} />
       ))}
