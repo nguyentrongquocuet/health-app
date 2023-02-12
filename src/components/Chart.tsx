@@ -66,6 +66,10 @@ const AppChart = forwardRef((props: HighchartsReact.Props, ref: ForwardedRef<TCh
     }
 
     window.addEventListener('resize', adaptSize)
+
+    return () => {
+      window.removeEventListener('resize', adaptSize)
+    }
   }, [props.responsive])
 
   return (

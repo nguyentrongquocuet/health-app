@@ -46,3 +46,28 @@
 .recommended-posts + .recommended-skeleton {
   margin-top: 24px;
 }
+
+.to-top-btn {
+  @apply opacity-0 pointer-events-none;
+  transition: opacity .3s ease-in-out;
+
+  path {
+    transition: all .3s ease-in-out;
+  }
+
+  &:hover {
+    path.st-circle {
+      stroke: transparent;
+      @apply fill-primary-400;
+      fill-opacity: 1;
+    }
+
+    path.st-arrow {
+      @apply fill-light;
+    }
+  }
+}
+
+.to-top-btn.active {
+  @apply opacity-100 pointer-events-auto;
+}
