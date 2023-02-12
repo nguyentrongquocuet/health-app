@@ -13,3 +13,7 @@
     margin: 0 auto;
   }
 }
+
+.bg-gradient {
+  @apply bg-gradient-to-b from-primary-300 to-primary-400;
+}
