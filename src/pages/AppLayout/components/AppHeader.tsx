@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <StyledHeader id="app-header" className="w-full bg-dark-500 z-10 sticky top-0 left-0">
       <nav className="h-16 app-container flex justify-between">
-        <Link to={ROUTER_PATHS.Home}>
+        <Link aria-label="Healthy logo" to={ROUTER_PATHS.Home}>
           <Logo />
         </Link>
         <NavItemList className="py-2 flex items-center">
@@ -34,7 +34,9 @@ const Header = () => {
             </CounterBadge>
             <span>お知らせ</span>
           </NavItem>
-          <PopoverMenu />
+          <li>
+            <PopoverMenu />
+          </li>
         </NavItemList>
       </nav>
     </StyledHeader>
@@ -67,16 +69,20 @@ const NavItem: FC<{
   to?: string
 }> = ({ children, to }) => {
   const content = (
-    <li tabIndex={0} className="py-3 pl-2 pr-4 w-40 flex items-center gap-2">
+    <div tabIndex={0} className="py-3 pl-2 pr-4 w-40 flex items-center gap-2">
       {children}
-    </li>
+    </div>
   )
 
   if (to) {
-    return <NavLink to={to}>{content}</NavLink>
+    return (
+      <li>
+        <NavLink to={to}>{content}</NavLink>{' '}
+      </li>
+    )
   }
 
-  return content
+  return <li>{content}</li>
 }
 
 const menuItems = [
@@ -118,16 +124,7 @@ const PopoverMenu = memo(() => {
 
   return (
     <div className="relative select-none overflow-visible w-8 h-8 ml-4" role="button">
-      <button
-        onKeyUp={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          if (e.key == ' ') {
-            toggleOpen()
-          }
-        }}
-        onClick={toggleOpen}
-      >
+      <button title={open ? 'Close menu' : 'Open menu'} onClick={toggleOpen}>
         {open ? <CloseIcon /> : <MenuIcon />}
       </button>
       <div ref={containerRef} className={open ? 'absolute top-8 right-0 w-[280px]' : 'hidden'}>

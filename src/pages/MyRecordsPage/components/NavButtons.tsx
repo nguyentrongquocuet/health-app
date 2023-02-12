@@ -1,4 +1,5 @@
 import MyRecommendImg from '@app/assets/MyRecommend-1.png'
+import ButtonLikeBox from '@app/components/ButtonLikeBox'
 import { APP_SECTION_IDS } from '@app/constants'
 import { FC } from 'react'
 import styled from 'styled-components'
@@ -51,9 +52,10 @@ const NavButton: FC<{
   return (
     <StyledButton
       onClick={onClick}
+      onHitEnter={onClick}
       title={label}
       aria-label={label}
-      className="text-center aspect-square relative w-full overflow-hidden bg-dark-600 border-primary-300"
+      className="flex-center text-center aspect-square relative w-full overflow-hidden bg-dark-600 border-primary-300"
     >
       <img className="absolute top-0 left-0 mix-blend-luminosity" alt={caption} src={figure} />
       <div className="relative">
@@ -64,7 +66,7 @@ const NavButton: FC<{
   )
 }
 
-const StyledButton = styled.button`
+const StyledButton = styled(ButtonLikeBox)`
   border-width: 24px;
 `
 
