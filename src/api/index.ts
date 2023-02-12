@@ -1,6 +1,6 @@
 import faker from '@app/libs/faker'
 
-import { EMealTime, IExercise, IMealHistoryItem } from './types'
+import { EMealTime, IDiarySummary, IExercise, IMealHistoryItem } from './types'
 
 let i = 0
 const newId = () => `${i++}`
@@ -47,6 +47,15 @@ export const getMyExercises = (): IExercise[] => {
     id: newId(),
     kcal: faker.datatype.number({ min: 10, max: 20 }),
     timeAmountSeconds: faker.datatype.number({ min: 600, max: 1000 }),
+    title: faker.lorem.sentence(5),
+  }))
+}
+
+export const getMyDiariesSummary = (): IDiarySummary[] => {
+  return new Array(8).fill(0).map((_) => ({
+    id: newId(),
+    content: faker.lorem.sentence(30),
+    date: faker.date.past().toString(),
     title: faker.lorem.sentence(5),
   }))
 }

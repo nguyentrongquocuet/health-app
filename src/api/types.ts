@@ -19,3 +19,10 @@ export interface IExercise {
   timeAmountSeconds: number
   kcal: number
 }
+
+export interface IDiarySummary {
+  id: string
+  date: string
+  title: string
+  content: string
+}

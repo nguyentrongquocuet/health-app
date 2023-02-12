@@ -1,4 +1,5 @@
 import { APP_SECTION_IDS } from '@app/constants'
+import MyDiary from '@app/containers/MyDiary'
 import MyExercise from '@app/containers/MyExercise'
 import { FC } from 'react'
 
@@ -10,6 +11,7 @@ const MyRecordsPage: FC = () => {
     <div className="app-container">
       <NavButtons />
       <MyExercise id={APP_SECTION_IDS.Exercise} className="mt-14" />
+      <MyDiary id={APP_SECTION_IDS.Diary} className="mt-14" />
     </div>
   )
 }
