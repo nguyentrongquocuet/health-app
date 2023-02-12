@@ -1,6 +1,6 @@
 import faker from '@app/libs/faker'
 
-import { EMealTime, IDiarySummary, IExercise, IMealHistoryItem, IRecommendedPost } from './types'
+import { EMealTime, IDiarySummary, IExercise, IMealHistoryItem, IMyProgress, IRecommendedPost } from './types'
 
 let i = 0
 const newId = () => `${i++}`
@@ -68,4 +68,10 @@ export const getRecommendedPosts = (): IRecommendedPost[] => {
     id: newId(),
     summary: faker.lorem.paragraph(3),
   }))
+}
+
+export const getMyProgress = (): IMyProgress => {
+  return {
+    progressPercent: 75,
+  }
 }

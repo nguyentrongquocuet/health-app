@@ -37,3 +37,7 @@ export interface IRecommendedPost {
   hashtags: string[]
   id: string
 }
+
+export interface IMyProgress {
+  progressPercent: number
+}
