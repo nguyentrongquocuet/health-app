@@ -15,7 +15,7 @@ const DiarySummary: FC<Omit<IDiarySummary, 'id'>> = ({ content, date, title }) =
         <span>{time}</span>
       </Header>
       <Body className="mt-2">
-        <p>{title}</p>
+        <p className="line-clamp-2">{title}</p>
         <p className="line-clamp-5">{content}</p>
       </Body>
     </Wrapper>

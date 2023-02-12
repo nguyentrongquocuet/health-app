@@ -7,7 +7,7 @@ const Exercise: FC<Omit<IExercise, 'id'>> = ({ kcal, timeAmountSeconds, title })
     <div className="pt-2 pr-3 border-b border-b-gray-400">
       <div className="flex items-center">
         <Dot>●</Dot>
-        <ExerciseTitle className="ml-3">家事全般（立位・軽い）</ExerciseTitle>
+        <ExerciseTitle className="ml-3 line-clamp-1 max-w-[60%]">家事全般（立位・軽い）</ExerciseTitle>
         <ExerciseTime className="ml-auto text-primary-300 font-body">10 min</ExerciseTime>
       </div>
       <Calory className="font-body ml-4 text-primary-300">26kcal</Calory>
