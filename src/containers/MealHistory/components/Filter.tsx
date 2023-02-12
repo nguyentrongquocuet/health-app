@@ -1,5 +1,6 @@
 import { ReactComponent as CupIcon } from '@app/assets/icon_cup.svg'
 import { ReactComponent as KnifeIcon } from '@app/assets/icon_knife.svg'
+import { FC } from 'react'
 
 import FilterButton from './FilterButton'
 
@@ -26,11 +27,13 @@ const items = [
   },
 ]
 
-const Filter = () => {
+const Filter: FC<{
+  onChange?: (newKey: string) => void
+}> = ({ onChange }) => {
   return (
     <div className="flex justify-center gap-16 py-6 font-body">
       {items.map((item) => (
-        <FilterButton key={item.key} icon={item.icon} label={item.label} />
+        <FilterButton onClick={() => onChange?.(item.key)} key={item.key} icon={item.icon} label={item.label} />
       ))}
     </div>
   )

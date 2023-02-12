@@ -41,12 +41,20 @@ const RecommendedForYou: FC<{
       return
     }
 
-    refetch(posts.length + 8)
+    refetch([posts.length + 8])
+  }
+
+  const fetchNewCategory = () => {
+    if (isLoading) {
+      return
+    }
+
+    refetch([posts.length + 8], true)
   }
 
   return (
     <section className={className} id={id}>
-      <CategoryList items={categories} />
+      <CategoryList onChange={fetchNewCategory} items={categories} />
       {posts && <RecommendedList posts={posts} />}
       {isLoading && <Skeleton />}
       <div className="text-center mt-6">

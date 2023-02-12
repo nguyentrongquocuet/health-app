@@ -18,7 +18,7 @@ const MyDiary: FC<{
       return
     }
 
-    refetch(data.length + 8)
+    refetch([data.length + 8])
   }
 
   return (

@@ -23,7 +23,7 @@ Allow viewing all pages including Top page, My Record, Landing page
 ## Styling
 I skip to the end with `TailwindCSS` 😄
 
-I found some inconsistence in the design that includes typography, spacing unit hence it’s not very convenient  to define CSS class for all of them, it’s when `styled-components` comes in to play. Follow that path, every component has its own typography styles, and in some cases its own irregular sizes/spacing. `twin.macro` is also a good choice to mix up Tailwind and CSS but the node version Im using is not supported.
+I found some inconsistency in the design that includes typography, spacing unit hence it’s not very convenient  to define CSS class for all of them, it’s when `styled-components` comes in to play. Follow that path, every component has its own typography styles, and in some cases its own irregular sizes/spacing. `twin.macro` is also a good choice to mix up Tailwind and CSS but the node version Im using is not supported.
 The app shall not be responsive
 
 ## Mock data
@@ -38,6 +38,7 @@ There are 2 fonts:
 - Bundle size is too large(422kb after gzip)
 - No API error handling
 - The app is not responsive
+- The chart in home page wouldnt switch to the `year` range after first load
 
 # Dev env:
 Node.js: 16.13.1

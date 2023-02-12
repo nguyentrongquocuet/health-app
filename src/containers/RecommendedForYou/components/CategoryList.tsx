@@ -9,11 +9,12 @@ export interface IRecommendedCategory {
 
 const CategoryList: FC<{
   items: IRecommendedCategory[]
-}> = ({ items: categories }) => {
+  onChange?: (catKey: string) => void
+}> = ({ items: categories, onChange }) => {
   return (
     <div className="grid grid-cols-4 gap-8">
       {categories.map(({ description, key, label }) => (
-        <Category key={key} label={label} description={description} />
+        <Category onClick={() => onChange?.(key)} key={key} label={label} description={description} />
       ))}
     </div>
   )

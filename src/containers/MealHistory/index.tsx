@@ -14,12 +14,20 @@ const MealHistory = () => {
       return
     }
 
-    refetch(meals.length + 8)
+    refetch([meals.length + 8])
+  }
+
+  const fetchNewCaterory = () => {
+    if (isLoading) {
+      return
+    }
+
+    refetch([meals.length + 8], true)
   }
 
   return (
     <section aria-label="食事履歴" className="app-container text-center">
-      <Filter />
+      <Filter onChange={fetchNewCaterory} />
       {meals && <HistoryList items={meals} />}
       {isLoading && <Skeleton />}
       <Button onClick={triggerLoadMore} className="mt-7">
