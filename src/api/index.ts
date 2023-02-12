@@ -1,4 +1,5 @@
 import faker from '@app/libs/faker'
+import dayjs from 'dayjs'
 
 import { EMealTime, IDiarySummary, IExercise, IMealHistoryItem, IMyProgress, IRecommendedPost } from './types'
 
@@ -74,4 +75,27 @@ export const getMyProgress = (): IMyProgress => {
   return {
     progressPercent: 75,
   }
+}
+
+const getMonthlyChartSerie = (numOfMonths: number, endDate: number) => {
+  const today = dayjs(endDate)
+
+  return new Array(12)
+    .fill(0)
+    .map((_, idx) => {
+      return [
+        today.subtract(idx, 'months').unix() * 1000,
+        faker.datatype.number({
+          min: 10,
+          max: 20,
+        }),
+      ]
+    })
+    .reverse()
+}
+
+export const getMonthlyBMIChartData = (numOfMonths = 12) => {
+  const now = Date.now()
+
+  return [getMonthlyChartSerie(numOfMonths, now), getMonthlyChartSerie(numOfMonths, now)]
 }
