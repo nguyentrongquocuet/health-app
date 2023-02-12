@@ -7,6 +7,7 @@
 
 @layer base {
   body {
+    @apply bg-light;
     @apply text-light;
     @apply font-light;
     max-width: 1280px;
