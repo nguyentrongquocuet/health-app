@@ -46,14 +46,14 @@ export const getMealHistory = (): IMealHistoryItem[] => {
   return [...createMealsForADay(new Date()), ...createMealsForADay(new Date(Date.now() - 25 * 60 * 60 * 1000))]
 }
 
-export const getMyExercises = (): IExercise[] => {
+export const getMyExercises = timeoutPromisify((): IExercise[] => {
   return new Array(40).fill(0).map((_) => ({
     id: newId(),
     kcal: faker.datatype.number({ min: 10, max: 20 }),
     timeAmountSeconds: faker.datatype.number({ min: 600, max: 1000 }),
     title: faker.lorem.sentence(5),
   }))
-}
+}, getApiCallTime)
 
 export const getMyDiariesSummary = timeoutPromisify((amount = 8): IDiarySummary[] => {
   return new Array(amount).fill(0).map((_) => ({

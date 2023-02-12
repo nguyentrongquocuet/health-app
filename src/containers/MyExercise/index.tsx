@@ -1,23 +1,27 @@
 import { getMyExercises } from '@app/api'
 import { formatDate } from '@app/helpers/date-time'
+import useFakeFetch from '@app/hooks/useFakeFetch'
 import classNames from 'classnames'
 import { FC } from 'react'
 import styled from 'styled-components'
 
 import ExerciseList from './components/ExerciseList'
+import Skeleton from './components/Skeleton'
 
 // TODO: seems this design is for infinite loading, potential performance issue on large list, implement virtual list
 const MyExercise: FC<{
   className?: string
   id?: string
 }> = ({ className, id }) => {
+  const { data: exercises } = useFakeFetch(getMyExercises, [])
+
   return (
     <Wrapper id={id} className={classNames(className, 'bg-dark-500')}>
       <div className="mb-1 flex uppercase font-body">
         <Heading>My exercise</Heading>
         <RecordDate>{formatDate(Date.now(), 'YYYY.MM.DD')}</RecordDate>
       </div>
-      <ExerciseList items={getMyExercises()} />
+      {!exercises ? <Skeleton /> : <ExerciseList items={exercises} />}
     </Wrapper>
   )
 }

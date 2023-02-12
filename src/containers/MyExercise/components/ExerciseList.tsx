@@ -16,7 +16,7 @@ const ExerciseList: FC<{
   )
 }
 
-const ExerciseListWrapper = styled.div`
+export const ExerciseListWrapper = styled.div`
   height: 192px;
 
   &::-webkit-scrollbar {
