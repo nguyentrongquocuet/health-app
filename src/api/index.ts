@@ -1,3 +1,4 @@
+import { timeoutPromisify } from '@app/helpers/functions'
 import faker from '@app/libs/faker'
 import dayjs from 'dayjs'
 
@@ -94,8 +95,11 @@ const makeChartSerie = (amountOfUnit: number, unit: dayjs.ManipulateType, endDat
     .reverse()
 }
 
-export const getMonthlyBMIChartData = (numOfMonths = 12) => {
-  const now = Date.now()
+export const getMonthlyBMIChartData = timeoutPromisify(
+  (numOfMonths = 12) => {
+    const now = Date.now()
 
-  return [makeChartSerie(numOfMonths, 'month', now), makeChartSerie(numOfMonths, 'month', now)]
-}
+    return [makeChartSerie(numOfMonths, 'month', now), makeChartSerie(numOfMonths, 'month', now)]
+  },
+  () => faker.datatype.number({ min: 100, max: 3000 })
+)

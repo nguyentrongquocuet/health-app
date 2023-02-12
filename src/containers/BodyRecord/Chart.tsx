@@ -1,16 +1,32 @@
 import { getMonthlyBMIChartData } from '@app/api'
 import Chart, { TChartRef } from '@app/components/Chart'
-import { useRef } from 'react'
+import useFakeFetch from '@app/hooks/useFakeFetch'
+import { useEffect, useRef } from 'react'
 
-import { createChartOptions } from './utils'
+import { createChartOptions, createFatSerie, createWeightSerie } from './utils'
 
-const chartData = getMonthlyBMIChartData(20)
+const options = createChartOptions()
 
 const BodyRecordChart = () => {
   const ref = useRef<TChartRef | null>(null)
-  const { current: options } = useRef(createChartOptions(chartData[0], chartData[1]))
+  const { data: chartData, isLoading } = useFakeFetch(getMonthlyBMIChartData, [20])
 
-  console.log('chartData', chartData)
+  useEffect(() => {
+    const { current: chart } = ref
+
+    if (!chart) {
+      return
+    }
+
+    if (!isLoading) {
+      chart.chart.addSeries(createWeightSerie(chartData[0]), false)
+      chart.chart.addSeries(createFatSerie(chartData[1]), false)
+      chart.chart.hideLoading()
+      chart.chart.redraw(true)
+    } else {
+      chart.chart.hideLoading()
+    }
+  }, [isLoading, chartData])
 
   return <Chart ref={ref} options={options} />
 }
