@@ -1,6 +1,6 @@
 import { IRecommendedPost } from '@app/api/types'
 import AspectRatioBox from '@app/components/AspectRatioBox'
-import dayjs from 'dayjs'
+import { formatDate } from '@app/helpers/date-time'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -22,7 +22,7 @@ const RecommendedPost: FC<IRecommendedPost> = ({ date, figure, summary, hashtags
     <div title={summary}>
       <AspectRatioBox aspectRatio="13/8">
         <img className="block w-full h-full object-cover" alt={summary} src={figure} />
-        <Tag className="absolute bottom-0 left-0 px-2 bg-primary-300 font-body">{dayjs(date).format('YYYY.MM.DD  HH:mm')}</Tag>
+        <Tag className="absolute bottom-0 left-0 px-2 bg-primary-300 font-body">{formatDate(Date.now(), 'YYYY.MM.DD  HH:mm')}</Tag>
       </AspectRatioBox>
       <PostSummary className="text-dark-500 mt-2 line-clamp-2">{summary}</PostSummary>
       <div className="text-primary-400">
